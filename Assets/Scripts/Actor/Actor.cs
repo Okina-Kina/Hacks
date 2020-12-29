@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class Actor : MonoBehaviour {
     private Vector2Int _velocity = new Vector2Int (1, 0);
-    public Vector2Int Offset { private set; get; } = new Vector2Int (0, 48);
     public Vector2Int GridIdx { private set; get; }
     public ActorParameter Parameter { set; get; } = new ActorParameter ();
     //----------------------------------------------------------------------
@@ -26,7 +25,8 @@ public class Actor : MonoBehaviour {
             .Subscribe (_ => {
                 GridIdx += _velocity;
                 var qvPos = QuarterView
-                    .GetQVCoord (GridIdx.x, GridIdx.y, Offset, gridMap);
+                    .GetQVCoord (GridIdx.x, GridIdx.y,
+                        gridMap.ActorOffset, gridMap);
                 Moving (qvPos);
             }).AddTo (gameObject);
     }
