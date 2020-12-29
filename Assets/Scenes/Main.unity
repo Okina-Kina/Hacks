@@ -390,13 +390,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1866683664}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d01e1853c604ee46b02ef7ef23861f5, type: 3}
+  m_Script: {fileID: 11500000, guid: f21331b526238cc42b3033b882b5a1fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _mapChips:
-  - {fileID: -58505428006439568, guid: f1fab3223a00f1e4884b3468734643ff, type: 3}
-  - {fileID: 1584472601193114259, guid: f1fab3223a00f1e4884b3468734643ff, type: 3}
-  _offset: {x: -960, y: -400}
-  _width: 20
-  _height: 8
-  _mapChipSize: 4
+  - {fileID: -7780023800794264554, guid: 7bb9eb2f601f4a94481ed2f25baa7153, type: 3}
+  - {fileID: -7780023800794264554, guid: 7bb9eb2f601f4a94481ed2f25baa7153, type: 3}

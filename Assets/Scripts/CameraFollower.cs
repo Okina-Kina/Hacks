@@ -4,8 +4,8 @@ using UnityEngine.UIElements;
 public class CameraFollower : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed;
-    private int _leftLimitLine = -60;
-    private int _rightLimitLine = 1060;
+    private int _leftLimitLine = -480;
+    private int _rightLimitLine = 480;
     private Vector3 _preMousePos;
 
     /// <summary>
