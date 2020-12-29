@@ -9,6 +9,7 @@ public class GridMap {
     public int[, ] Grid { private set; get; }
     public Vector2Int GridSize { get { return _gridSize; } }
     public Vector2Int Offset { get { return _offset; } }
+    public Vector2Int ActorOffset { private set; get; } = new Vector2Int (0, 48);
     public int TileSize { private set; get; } = 32;
     public int TileMagnification { private set; get; } = 4;
 

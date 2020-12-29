@@ -41,6 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Grid
+    uniqueID: 2352635175
+    locked: 0
   - name: Actor
     uniqueID: 3817679047
     locked: 0

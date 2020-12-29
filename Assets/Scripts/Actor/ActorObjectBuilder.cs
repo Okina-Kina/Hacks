@@ -6,33 +6,31 @@ using UnityEngine;
 
 // 
 public class ActorObjectBuilder : ObjectBuilderBase {
-    [SerializeField] Actor _actor;
+    [SerializeField] private Actor _actor;
     private ActorObserver _actorObserver;
-    private GridMapManager _gridMapManager;
+    //----------------------------------------------------------------------
+    public GridMapManager GridMapManager { private set; get; }
     //----------------------------------------------------------------------
     /// <summary>
     /// 指定マスにアクターを生成
     /// </summary>
-    private GameObject PlaceActor (int x, int y) {
+    public GameObject PlaceActor (Vector2Int idx) {
         var newActor = Instantiate (_actor.gameObject) as GameObject;
-        var currentGridMap = _gridMapManager.CurrentGridMap;
+        var currentGridMap = GridMapManager.CurrentGridMap;
 
-        var offset = newActor.GetComponent<Actor> ().Offset;
-        var qvPos = QuarterView.GetQVCoord (x, y, offset, currentGridMap);
+        var offset = currentGridMap.ActorOffset;
+        var qvPos = QuarterView.GetQVCoord (idx.x, idx.y, offset, currentGridMap);
 
         SetObjectPosition (newActor, qvPos);
         newActor.GetComponent<Actor> ()
-            .Action (new Vector2Int (x, y), currentGridMap);
+            .Action (idx, currentGridMap);
 
         return newActor;
     }
     //----------------------------------------------------------------------
     void Start () {
         _actorObserver = FindObjectOfType<ActorObserver> ();
-        _gridMapManager = FindObjectOfType<GridMapManager> ();
-
-        PlaceActor (0, 0);
-        PlaceActor (4, 4);
+        GridMapManager = FindObjectOfType<GridMapManager> ();
     }
 
 }
