@@ -8,25 +8,35 @@ public static class QuarterView {
     /// <summary>
     /// QV座標を取得
     /// </summary>
-    public static Vector2Int GetQVCoord (int x, int y, GridMap gridMap) {
+    public static Vector2Int GetQVCoord (int x, int y, Vector2Int offset, GridMap gridMap) {
         var tileSize = gridMap.TileSize * gridMap.TileMagnification;
+
         var qx = (int) (tileSize / 2 * (x + y) + gridMap.Offset.x);
         var qy = (int) (tileSize / 4 * (x - y) + gridMap.Offset.y);
 
-        return new Vector2Int (qx, qy) + gridMap.Offset;
+        return new Vector2Int (qx, qy) + offset;
+    }
+    //----------------------------------------------------------------------
+    public static Vector2Int GetQVCoord (int x, int y, GridMap gridMap) {
+        return GetQVCoord (x, y, Vector2Int.zero, gridMap);
     }
     //----------------------------------------------------------------------
     /// <summary>
     /// QV座標からインデックスを取得
     /// </summary>
-    public static Vector2Int GetQVIdx (int qx, int qy, GridMap gridMap) {
+    public static Vector2Int GetQVIdx (int qx, int qy, Vector2Int offset, GridMap gridMap) {
         var tileSize = gridMap.TileSize * gridMap.TileMagnification;
-        qx -= gridMap.Offset.x;
-        qy -= gridMap.Offset.y;
+        qx -= gridMap.Offset.x + offset.x;
+        qy -= gridMap.Offset.y + offset.y;
 
         var x = (qx + (2 * qy)) / tileSize;
         var y = (qx - (2 * qy)) / tileSize;
 
         return new Vector2Int ((int) x, (int) y);
     }
+    //----------------------------------------------------------------------
+    public static Vector2Int GetQVIdx (int qx, int qy, GridMap gridMap) {
+        return GetQVIdx (qx, qy, Vector2Int.zero, gridMap);
+    }
+
 }

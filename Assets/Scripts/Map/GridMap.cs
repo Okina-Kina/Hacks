@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GridMap {
-    [SerializeField] private Vector2Int _gridSize = new Vector2Int (10, 10);
+    [SerializeField] private Vector2Int _gridSize = new Vector2Int (30, 30);
     [SerializeField] private Vector2Int _offset = new Vector2Int (-320, 0);
 
     public int[, ] Grid { private set; get; }
